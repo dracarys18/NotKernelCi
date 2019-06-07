@@ -1,12 +1,12 @@
 #!bin/bash
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 echo "Clone Toolchains"
-git clone -q -j32 https://github.com/Teamlions/aarch64-linux-gnu-7.3 gcc
+git clone -q -j32 https://github.com/dracarys18/toolchain.git 
 echo "Done"
 echo "Clone AnyKernel"
 git clone -q -j32 https://github.com/Yasir-siddiqui/AnyKernel3 AnyKernel
 echl "Done"
-GCC="$(pwd)/gcc/bin/aarch64-linux-gnu-"
+GCC="$(pwd)/toolchain/bin/aarch64-linux-android-"
 tanggal=$(TZ=Asia/Jakarta date +'%H%M-%d%m%y')
 START=$(date +"%s")
 export ARCH=arm64
@@ -33,7 +33,7 @@ function push() {
 			-F chat_id="$chat_id" \
 			-F "disable_web_page_preview=true" \
 			-F "parse_mode=html" \
-			-F caption="Build took $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) second(s). | #NotKernel | <b>GCC 7.4.0</b>"
+			-F caption="Build took $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) second(s). | #NotKernel | <b>GCC 4.9</b>"
 }
 # Fin Error
 function finerr() {
