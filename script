@@ -5,7 +5,7 @@ git clone -q -j32 https://github.com/dracarys18/toolchain.git
 echo "Done"
 echo "Clone AnyKernel"
 git clone -q -j32 https://github.com/Yasir-siddiqui/AnyKernel3 AnyKernel
-echl "Done"
+echo "Done"
 GCC="$(pwd)/toolchain/bin/aarch64-linux-android-"
 tanggal=$(TZ=Asia/Jakarta date +'%H%M-%d%m%y')
 START=$(date +"%s")
