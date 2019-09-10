@@ -8,7 +8,7 @@ echo "Clone AnyKernel"
 git clone -q -j32 https://github.com/Yasir-siddiqui/AnyKernel3 AnyKernel
 echo "Done"
 GCC="$(pwd)/toolchain/bin/aarch64-linux-android-"
-GCC32="$(pwd)/toolchain32/bin/arm-linux-androideabi-
+GCC32="$(pwd)/toolchain32/bin/arm-linux-androideabi-"
 tanggal=$(TZ=Asia/Jakarta date +'%H%M-%d%m%y')
 START=$(date +"%s")
 export ARCH=arm64
