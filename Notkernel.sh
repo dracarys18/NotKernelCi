@@ -46,8 +46,10 @@ function finerr() {
 }
 # Compile plox
 function compile() {
-        make -s -C $(pwd) O=out mido_defconfig
-        make -C $(pwd) CROSS_COMPILE=${GCC} && CROSS_COMPILE_ARM32=${GCC32} O=out -j32 -l32 2>&1| tee build.log
+        export CROSS_COMPILE=${GCC}
+	export CROSS_COMPILE_ARM32=${GCC32}
+        make O=out clean && make O=out mrproper && make O=out mido_defconfig
+	make O=out -j$(nproc --all) 2>&1| tee build.log
             if ! [ -a $IMAGE ]; then
                 finerr
                 exit 1
