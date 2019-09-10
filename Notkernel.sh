@@ -2,11 +2,13 @@
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 echo "Clone Toolchains"
 git clone -q -j32 https://github.com/dracarys18/toolchain.git 
+git clone -q -j32 https://github.com/dracarys18/toolchain32.git
 echo "Done"
 echo "Clone AnyKernel"
 git clone -q -j32 https://github.com/Yasir-siddiqui/AnyKernel3 AnyKernel
 echo "Done"
 GCC="$(pwd)/toolchain/bin/aarch64-linux-android-"
+GCC32="$(pwd)/toolchain32/bin/arm-linux-androideabi-
 tanggal=$(TZ=Asia/Jakarta date +'%H%M-%d%m%y')
 START=$(date +"%s")
 export ARCH=arm64
@@ -45,7 +47,7 @@ function finerr() {
 # Compile plox
 function compile() {
         make -s -C $(pwd) O=out mido_defconfig
-        make -C $(pwd) CROSS_COMPILE=${GCC} O=out -j32 -l32 2>&1| tee build.log
+        make -C $(pwd) CROSS_COMPILE=${GCC} && CROSS_COMPILE_ARM32=${GCC32} O=out -j32 -l32 2>&1| tee build.log
             if ! [ -a $IMAGE ]; then
                 finerr
                 exit 1
