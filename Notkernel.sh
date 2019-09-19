@@ -25,7 +25,7 @@ function sendinfo() {
         curl -s -X POST "https://api.telegram.org/bot$token/sendMessage" \
                         -d chat_id=$chat_id \
                         -d "parse_mode=html" \
-                        -d text="<b>NotKernel </b> new build is up%0AStarted on <code>Drone CI</code>%0AFor device <b>MIDO</b> (Redmi Note 4)%0Abranch <code>$(git rev-parse --abbrev-ref HEAD)</code> (Android 9.0/Pie)%0AUnder commit <code>$(git log --pretty=format:'"%h : %s"' -1)</code>%0AUsing compiler: <code>$(${GCC}gcc --version | head -n 1)</code>%0AStarted on <code>$(TZ=Asia/India date)</code>%0A<b>DroneCI Status</b> <a href='https://cloud.drone.io/dracarys18/NotKernel'>here</a>%0A<b>Build Status:</b> #untested"
+                        -d text="<b>NotKernel </b> new build is up%0AStarted on <code>Drone CI</code>%0AFor device <b>MIDO</b> (Redmi Note 4)%0Abranch <code>$(git rev-parse --abbrev-ref HEAD)</code> (Android 9.0/Pie)%0AUnder commit <code>$(git log --pretty=format:'"%h : %s"' -1)</code>%0AUsing compiler: <code>$(${GCC}gcc --version | head -n 1)</code>%0AStarted on <code>$(TZ=Asia/India date)</code>%0A<b>DroneCI Status</b> <a href='$(CI_BUILD_URL)'>here</a>%0A<b>Build Status:</b> #untested"
 }
 # Push kernel to channel
 function push() {
